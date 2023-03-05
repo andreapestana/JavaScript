@@ -10,10 +10,10 @@ class Discoteca {
     }
 }
 
-const laChula = new Discoteca("La chula","Las palmas","5000")
-const teatroVictoria = new Discoteca("Teatro Victoria","Poblado","15000")
-const laHouse = new Discoteca("La House","Poblado","5000")
-const laTerraza = new Discoteca("La Terraza","Laureles","5000")
+const laChula = new Discoteca("La chula","Las palmas",5000)
+const teatroVictoria = new Discoteca("Teatro Victoria","Poblado",15000)
+const laHouse = new Discoteca("La House","Poblado",5000)
+const laTerraza = new Discoteca("La Terraza","Laureles",5000)
 
 let discotecaDeseada = parseInt(
     prompt("Escoge la discoteca a la que quieres ir. 1.La chula- 2.Teatro Victoria- 3.La House- 4.La terraza"
@@ -51,18 +51,17 @@ while (escogioDiscoteca === false) {
 
 // Dia en los que las discotecas abren
 class Dia {
-    constructor(viernes,sabado,domingo){
-        this.viernes = viernes
-        this.sabado = sabado
-        this.domingo = domingo
+    constructor(nombreDia,multi){
+        this.nombreDia = nombreDia
+        this.multi = multi
     }
 }
 
-const viernes = new Dia(2.0)
-const sabado = new Dia(3.0)
-const domingo = new Dia(1.0)
+const viernes = new Dia('Viernes',2)
+const sabado = new Dia('Sabado',3)
+const domingo = new Dia('Domingo',1)
 
-const diaEscogido = parseInt(prompt("Ingresa el dia que quieres ir a la discoteca 1.Viernes- 2. Sabado- 3. Domingo"))
+let DiaDeseado = parseInt(prompt("Ingresa el dia que quieres ir a la discoteca 1.Viernes- 2. Sabado- 3. Domingo"))
 
 let escogioDia = false
 
@@ -74,25 +73,22 @@ while (escogioDia === false) {
     if (DiaDeseado === 1) {
         escogioDia = true
         infoDiaDeseado = viernes
-    } else if (DiaDeseada === 2) {
+    } else if (DiaDeseado === 2) {
         escogioDia = true
         infoDiaDeseado = sabado
     } else if (DiaDeseado === 3) {
         escogioDia = true
         infoDiaDeseado = domingo
+    } else {
     DiaDeseado = parseInt(
         prompt(
             "Ingrese nuevamente el dia que quisiera ir a la discoteca. 1.Viernes- 2. Sabado- 3. Domingo"
         )
-     )
+     )}
         
   }
-}
 
-const coverViernes = calcularCosto(diaEscogido, discotecaDeseada, 2.0)
-const coverSabado = calcularCosto(diaEscogido, discotecaDeseada, 3.0)
-const coverDomingo = calcularCosto(diaEscogido, discotecaDeseada, 1.0)
-
+const coverFinal = calcularCosto(infoDiaDeseado.multi, infoDiscotecaDeseada.cover)
 
 //funcion calcular costos dependiendo el cover de la discoteca y el dia.
 function calcularCosto(cover,dia){
@@ -100,6 +96,6 @@ function calcularCosto(cover,dia){
     return costo
 }
 
-alert(`El cover en ${infoDiscotecaDeseada} son: 1. ${coverViernes} el viernes- 2. ${coverSabado} el sabado- 3.${coverDomingo} el domingo`)
+alert (`El cover en ${infoDiscotecaDeseada.nombre} son: ${coverFinal}`)
 
 
