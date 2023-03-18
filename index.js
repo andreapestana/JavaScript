@@ -3,17 +3,21 @@
 // Discotecas
 
 class Discoteca {
-    constructor(nombre,barrio,cover){
+    constructor(id,nombre,barrio,cover){
+        this.id = id
         this.nombre = nombre
         this.barrio = barrio
         this.cover = cover
     }
 }
 
-const laChula = new Discoteca("La chula","Las palmas",5000)
-const teatroVictoria = new Discoteca("Teatro Victoria","Poblado",15000)
-const laHouse = new Discoteca("La House","Poblado",5000)
-const laTerraza = new Discoteca("La Terraza","Laureles",5000)
+const discotecas = [ 
+    new Discoteca( 1,"La chula","Las palmas",5000),
+    new Discoteca(2,"Teatro Victoria","Poblado",15000),
+    new Discoteca(3,"La House","Poblado",5000),
+    new Discoteca(4,"La Terraza","Laureles",5000)
+
+]
 
 let discotecaDeseada = parseInt(
     prompt("Escoge la discoteca a la que quieres ir. 1.La chula- 2.Teatro Victoria- 3.La House- 4.La terraza"
@@ -24,71 +28,53 @@ let escogioDiscoteca = false
 
 //Variable info de la discoteca
 
-let infoDiscotecaDeseada
+let discoteca
 
 while (escogioDiscoteca === false) {
-    if (discotecaDeseada === 1) {
-        escogioDiscoteca = true
-        infoDiscotecaDeseada = laChula
-    } else if (discotecaDeseada === 2) {
-        escogioDiscoteca = true
-        infoDiscotecaDeseada = teatroVictoria
-    } else if (discotecaDeseada === 3) {
-        escogioDiscoteca = true
-        infoDiscotecaDeseada = laHouse
-    } else if (discotecaDeseada === 4) {
-        escogioDiscoteca = true
-        infoDiscotecaDeseada = laTerraza
- } else {
-    discotecaDeseada = parseInt(
+    discoteca = discotecas.find((discoteca => discoteca.id === discotecaDeseada))
+ if (!discoteca) {
+    discotecaDeseada = parseInt (
         prompt(
             "Vuelva a escoger la discoteca que mejor se ajusta a tu presupuesto? 1.La chula- 2.Teatro Victoria- 3.La House- 4.La terraza"
         )
-     )
-        
-  }
-}
+    )
+ } else {
+    escogioDiscoteca = true
+ }
+ }
 
 // Dia en los que las discotecas abren
 class Dia {
-    constructor(nombreDia,multi){
+    constructor(id,nombreDia,multi){
+        this.id = id
         this.nombreDia = nombreDia
         this.multi = multi
     }
 }
 
-const viernes = new Dia('Viernes',2)
-const sabado = new Dia('Sabado',3)
-const domingo = new Dia('Domingo',1)
-
-let DiaDeseado = parseInt(prompt("Ingresa el dia que quieres ir a la discoteca 1.Viernes- 2. Sabado- 3. Domingo"))
-
-let escogioDia = false
-
-//Variable info del dia
-
-let infoDiaDeseado
-
+const dias = [ 
+    new Dia( 1,'Viernes',2),
+    new Dia(2,'Sabado',3),
+    new Dia(3,'Domingo',1)
+]
+let diaDeseado = parseInt(
+    prompt("Ingresa el dia que quieres ir a la discoteca 1.Viernes- 2. Sabado- 3. Domingo"))
+    let escogioDia = false
 while (escogioDia === false) {
-    if (DiaDeseado === 1) {
-        escogioDia = true
-        infoDiaDeseado = viernes
-    } else if (DiaDeseado === 2) {
-        escogioDia = true
-        infoDiaDeseado = sabado
-    } else if (DiaDeseado === 3) {
-        escogioDia = true
-        infoDiaDeseado = domingo
-    } else {
-    DiaDeseado = parseInt(
+    Dia = dias.find((Dia => Dia.id === diaDeseado))
+ if (!Dia) {
+    diaDeseado = parseInt (
         prompt(
-            "Ingrese nuevamente el dia que quisiera ir a la discoteca. 1.Viernes- 2. Sabado- 3. Domingo"
+            "Vuelva a escoger el dia que quiere ir a la discoteca"
         )
-     )}
-        
-  }
+    )
+ } else {
+    escogioDia = true
+ }
+ }
 
-const coverFinal = calcularCosto(infoDiaDeseado.multi, infoDiscotecaDeseada.cover)
+
+const coverFinal = calcularCosto(ia.multi, discoteca.cover)
 
 //funcion calcular costos dependiendo el cover de la discoteca y el dia.
 function calcularCosto(cover,dia){
@@ -96,6 +82,6 @@ function calcularCosto(cover,dia){
     return costo
 }
 
-alert (`El cover en ${infoDiscotecaDeseada.nombre} son: ${coverFinal}`)
+alert (`El cover en ${discoteca.nombre} son: ${coverFinal}`)
 
 
