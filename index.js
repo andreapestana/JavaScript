@@ -65,7 +65,7 @@ while (escogioDia === false) {
  if (!Dia) {
     diaDeseado = parseInt (
         prompt(
-            "Vuelva a escoger el dia que quiere ir a la discoteca"
+            "Vuelva a escoger el dia que quiere ir a la discoteca 1.Viernes- 2. Sabado- 3. Domingo"
         )
     )
  } else {
@@ -74,7 +74,7 @@ while (escogioDia === false) {
  }
 
 
-const coverFinal = calcularCosto(ia.multi, discoteca.cover)
+const coverFinal = calcularCosto(Dia.multi, discoteca.cover)
 
 //funcion calcular costos dependiendo el cover de la discoteca y el dia.
 function calcularCosto(cover,dia){
